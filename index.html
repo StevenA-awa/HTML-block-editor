@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>html编辑器</title>
+    <script src="https://unpkg.com/blockly/blockly.min.js"></script>
+    <script src="https://unpkg.com/blockly/msg/zh-hans.js"></script>
+    <script src="https://unpkg.com/@blockly/field-colour"></script>
+    <script>registerFieldColour();</script>
+    <style>
+        body {
+            display: flex;
+            gap: 20px;
+            padding: 20px;
+            margin: 0;
+            background-color: #f8f9fa;
+            font-family: "Microsoft YaHei", Arial, sans-serif;
+        }
+        #blocklyContainer {
+            width: 600px;
+            height: 550px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        #rightPanel {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        button {
+            padding: 10px 16px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: #fff;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .codeBox, .previewBox {
+            padding: 16px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            flex: 1;
+            overflow: auto;
+        }
+        .codeBox {
+            font-family: "Courier New", monospace;
+            white-space: pre;
+            color: #333;
+        }
+        .previewBox {
+            color: #495057;
+            line-height: 1.5;
+        }
+        h3 {
+            margin: 0 0 8px;
+            font-size: 16px;
+            color: #343a40;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="blocklyContainer"></div>
+    <div id="rightPanel">
+    <button onclick="generateCode()">生成代码</button>
+    <button onclick="runCodePreview()">代码预览</button>
+        <div class="codeBox">
+            <h3>生成的代码：</h3>
+            <div id="codeDisplay"> 拖拽左侧积木后，点击「生成代码」查看</div>
+        </div>
+        <div class="previewBox">
+            <h3>执行结果：</h3>
+            <div id="previewDisplay"> 点击「代码预览」查看执行效果</div>
+        </div>
+    <div id="log" style="width: 300px"></div>
+    </div>
+    <script src="main.js"></script>
+
+</body>
+
+</html>
